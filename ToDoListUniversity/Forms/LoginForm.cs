@@ -32,7 +32,7 @@ namespace ToDoListUniversity
             {
                 if (tbLogin.Text == "admin" && tbPassword.Text == "admin") 
                 {
-                    User user = new User().GetUser("Mrpopick");
+                    User user = new User();
                     var newForm = new MainForm();
                     newForm.SetUser(user);
                     newForm.Show();

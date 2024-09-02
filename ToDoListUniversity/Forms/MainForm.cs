@@ -30,7 +30,7 @@ namespace ToDoListUniversity.Forms
 
         }
 
-        private void sfCalendar1_SelectionChanged(Syncfusion.WinForms.Input.SfCalendar sender, Syncfusion.WinForms.Input.Events.SelectionChangedEventArgs e)
+        /*private void sfCalendar1_SelectionChanged(Syncfusion.WinForms.Input.SfCalendar sender, Syncfusion.WinForms.Input.Events.SelectionChangedEventArgs e)
         {
             var newDate = e.NewValue;
             if (newDate != null)
@@ -45,7 +45,7 @@ namespace ToDoListUniversity.Forms
                     month = "0" + month;
                 lbDate.Text = day + "." + month + "." + newDate.Value.Year;
             }
-        }
+        }*/
 
         private void button1_Click(object sender, EventArgs e)
         {

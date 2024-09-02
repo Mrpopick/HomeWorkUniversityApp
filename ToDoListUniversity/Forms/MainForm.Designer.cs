@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.sfCalendar1 = new Syncfusion.WinForms.Input.SfCalendar();
+            //this.sfCalendar1 = new Syncfusion.WinForms.Input.SfCalendar();
             this.lbDate = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -45,14 +45,6 @@
             this.label1.Text = "label1";
             // 
             // sfCalendar1
-            // 
-            this.sfCalendar1.Location = new System.Drawing.Point(12, 118);
-            this.sfCalendar1.MinimumSize = new System.Drawing.Size(196, 196);
-            this.sfCalendar1.Name = "sfCalendar1";
-            this.sfCalendar1.Size = new System.Drawing.Size(245, 196);
-            this.sfCalendar1.TabIndex = 1;
-            this.sfCalendar1.Text = "sfCalendar1";
-            this.sfCalendar1.SelectionChanged += new Syncfusion.WinForms.Input.Events.SelectionChangedEventHandler(this.sfCalendar1_SelectionChanged);
             // 
             // lbDate
             // 
@@ -89,7 +81,7 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lbDate);
-            this.Controls.Add(this.sfCalendar1);
+            //this.Controls.Add(this.sfCalendar1);
             this.Controls.Add(this.label1);
             this.Name = "MainForm";
             this.Text = "MainForm";
@@ -101,7 +93,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private Syncfusion.WinForms.Input.SfCalendar sfCalendar1;
+        //private Syncfusion.WinForms.Input.SfCalendar sfCalendar1;
         private System.Windows.Forms.Label lbDate;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
