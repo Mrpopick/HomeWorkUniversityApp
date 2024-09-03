@@ -33,6 +33,8 @@ namespace ToDoListUniversity
                 if (tbLogin.Text == "admin" && tbPassword.Text == "admin") 
                 {
                     User user = new User();
+                    user.fullname = "Pidor";
+
                     var newForm = new MainForm();
                     newForm.SetUser(user);
                     newForm.Show();

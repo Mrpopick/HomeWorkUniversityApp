@@ -49,6 +49,9 @@ namespace ToDoListUniversity.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var newForm = new AddHomeworkForm(mainUser);
+            newForm.Show();
+            this.Hide();
         }
 
 
