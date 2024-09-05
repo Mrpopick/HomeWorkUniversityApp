@@ -108,5 +108,25 @@ namespace ToDoListUniversity.Forms
             }
             
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            UpdateTable(this.dataGridView1, HomeWorkInfo.GetAllHomewWork());
+        }
+
+        private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dataGridView1.SelectedCells.Count > 0)
+            {
+                DataGridViewCell selectedRow = dataGridView1.SelectedCells[0];
+                object homeworkData = dataGridView1.Rows[selectedRow.RowIndex].DataBoundItem;
+                // Now you can cast the object to its actual type, e.g.:
+                HomeWorkInfo homeworkCurent = (HomeWorkInfo)homeworkData;
+                curentHomework = homeworkCurent;
+                // Do something with the userData object
+                var a = new ViewHomeworkForm(curentHomework);
+                a.Show();
+            }
+        }
     }
 }
