@@ -125,6 +125,12 @@
     <Compile Include="Forms\AddHomeworkForm.Designer.cs">
       <DependentUpon>AddHomeworkForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ViewHomework.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ViewHomework.Designer.cs">
+      <DependentUpon>ViewHomework.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TaskBeginEndDate.resx">
       <DependentUpon>TaskBeginEndDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ViewHomework.resx">
+      <DependentUpon>ViewHomework.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
