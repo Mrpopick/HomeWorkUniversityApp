@@ -1,12 +1,5 @@
-﻿using Org.BouncyCastle.X509.Extension;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ToDoListUniversity.Models;
 
@@ -14,7 +7,7 @@ namespace ToDoListUniversity.Forms
 {
     public partial class ViewHomeworkForm : Form
     {
-        
+
         public ViewHomeworkForm(HomeWorkInfo curHmWork)
         {
             InitializeComponent();

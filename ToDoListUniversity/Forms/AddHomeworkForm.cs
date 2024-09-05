@@ -25,7 +25,7 @@ namespace ToDoListUniversity.Forms
             comboBox2.DataSource = dangerousLevel;
             user = mainUser;
             this.homeWorkInfo = hm;
-            if (hm != null) 
+            if (hm != null)
             {
                 this.comboBox1.SelectedItem = hm.subject;
                 this.comboBox2.SelectedItem = hm.difficulty;
@@ -122,32 +122,32 @@ namespace ToDoListUniversity.Forms
 
             using (MemoryStream mr = new MemoryStream(data))
             {
-                Image image = Image.FromStream(mr);
+                //Image image = Image.FromStream(mr);
 
-                // Define the maximum dimensions for the resized image
-                // Get the dimensions of the original image
-                int width = image.Width;
-                int height = image.Height;
+                //// Define the maximum dimensions for the resized image
+                //// Get the dimensions of the original image
+                //int width = image.Width;
+                //int height = image.Height;
 
-                // Define the maximum dimensions for the resized image
-                int maxWidth = pictureBox1.Width; // adjust this value to your needs
-                int maxHeight = pictureBox1.Height; // adjust this value to your needs
+                //// Define the maximum dimensions for the resized image
+                //int maxWidth = pictureBox1.Width; // adjust this value to your needs
+                //int maxHeight = pictureBox1.Height; // adjust this value to your needs
 
-                // Calculate the scaling factor
-                float scale = Math.Min((float)maxWidth / width, (float)maxHeight / height);
+                //// Calculate the scaling factor
+                //float scale = Math.Min((float)maxWidth / width, (float)maxHeight / height);
 
-                // Create a new Bitmap with the resized dimensions
-                Bitmap resizedImage = new Bitmap((int)(width * scale), (int)(height * scale));
+                //// Create a new Bitmap with the resized dimensions
+                //Bitmap resizedImage = new Bitmap((int)(width * scale), (int)(height * scale));
 
-                // Use a high-quality interpolation mode to resize the image
-                using (Graphics graphics = Graphics.FromImage(resizedImage))
-                {
-                    graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-                    graphics.DrawImage(image, 0, 0, resizedImage.Width, resizedImage.Height);
-                }
+                //// Use a high-quality interpolation mode to resize the image
+                //using (Graphics graphics = Graphics.FromImage(resizedImage))
+                //{
+                //    graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                //    graphics.DrawImage(image, 0, 0, resizedImage.Width, resizedImage.Height);
+                //}
 
-                // Now you can use the resizedImage object, e.g. display it in a PictureBox
-                pictureBox1.Image = resizedImage;
+                //// Now you can use the resizedImage object, e.g. display it in a PictureBox
+                //pictureBox1.Image = resizedImage;
             }
         }
     }

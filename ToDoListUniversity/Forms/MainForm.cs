@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using ToDoListUniversity.Models;
+using ToDoListUniversity.Services;
 
 namespace ToDoListUniversity.Forms
 {
@@ -58,7 +59,7 @@ namespace ToDoListUniversity.Forms
             }
             else
             {
-                MessageBox.Show("Менять задание может лишь его владелец!");
+                ViewService.GetErrorMessage("Менять задание может лишь его владелец!");
             }
 
         }
@@ -83,31 +84,16 @@ namespace ToDoListUniversity.Forms
                 if (curentHomework.fullname == mainUser.fullname)
                 {
                     HomeWorkInfo.DeleteHomeWork(curentHomework);
-                    MessageBox.Show("Задание удалено!");
+                    ViewService.GetSuccessMessage("Задание удалено!");
                     UpdateTable(this.dataGridView1, HomeWorkInfo.GetAllHomewWork());
                 }
                 else
                 {
-                    MessageBox.Show("Нельзя удалять чужие задания!");
+                    ViewService.GetErrorMessage("Нельзя удалять чужие задания!");
                 }
             }
         }
 
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dataGridView1.SelectedCells.Count > 0)
-            {
-                DataGridViewCell selectedRow = dataGridView1.SelectedCells[0];
-                object homeworkData = dataGridView1.Rows[selectedRow.RowIndex].DataBoundItem;
-                // Now you can cast the object to its actual type, e.g.:
-                HomeWorkInfo homeworkCurent = (HomeWorkInfo)homeworkData;
-                curentHomework = homeworkCurent;
-                // Do something with the userData object
-                var a = new ViewHomeworkForm(curentHomework);
-                a.Show();
-            }
-            
-        }
 
         private void button4_Click(object sender, EventArgs e)
         {

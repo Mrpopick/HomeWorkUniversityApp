@@ -33,7 +33,7 @@ namespace ToDoListUniversity.Forms
             if (!string.IsNullOrEmpty(tbEmail.Text))
             {
 
-                if (IsValidEmail(tbEmail.Text))
+                if (ViewService.IsValidEmail(tbEmail.Text))
                 {
                     if (!string.IsNullOrEmpty(tbLogin.Text))
                     {
@@ -73,23 +73,6 @@ namespace ToDoListUniversity.Forms
                 return false;
             }
         }
-        bool IsValidEmail(string email)
-        {
-            var trimmedEmail = email.Trim();
 
-            if (trimmedEmail.EndsWith("."))
-            {
-                return false; // suggested by @TK-421
-            }
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == trimmedEmail;
-            }
-            catch
-            {
-                return false;
-            }
-        }
     }
 }

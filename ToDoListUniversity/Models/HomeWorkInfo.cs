@@ -1,7 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 using ToDoListUniversity.Services;
 
@@ -44,7 +43,7 @@ namespace ToDoListUniversity.Models
                     sqlCommand.ExecuteNonQuery();
                     connection.Close();
                 }
-                    
+
             }
             catch (Exception ex)
             {
