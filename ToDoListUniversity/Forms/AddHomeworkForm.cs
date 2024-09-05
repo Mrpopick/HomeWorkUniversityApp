@@ -5,6 +5,7 @@ using System.Drawing.Drawing2D;
 using System.IO;
 using System.Windows.Forms;
 using ToDoListUniversity.Models;
+using ToDoListUniversity.Services;
 
 namespace ToDoListUniversity.Forms
 
@@ -24,6 +25,14 @@ namespace ToDoListUniversity.Forms
             comboBox2.DataSource = dangerousLevel;
             user = mainUser;
             this.homeWorkInfo = hm;
+            if (hm != null) 
+            {
+                this.comboBox1.SelectedItem = hm.subject;
+                this.comboBox2.SelectedItem = hm.difficulty;
+                this.textBox1.Text = hm.start.ToString();
+                this.textBox2.Text = hm.end.ToString();
+                this.richTextBox2.Text = hm.description;
+            }
 
 
         }
@@ -59,7 +68,7 @@ namespace ToDoListUniversity.Forms
 
                 }
                 HomeWorkInfo.UpdateHomeWork(homeWorkInfo);
-                MessageBox.Show("Дз обновлено");
+                ViewService.GetSuccessMessage("Дз обновлено");
                 this.Close();
             }
             else
@@ -83,7 +92,7 @@ namespace ToDoListUniversity.Forms
                 }
 
                 HomeWorkInfo.AddNewHomeWork(hwinfo);
-                MessageBox.Show("Дз добавленно!");
+                ViewService.GetSuccessMessage("Дз добавленно!");
                 this.Close();
             }
         }

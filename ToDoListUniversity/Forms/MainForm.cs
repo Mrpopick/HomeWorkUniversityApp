@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using ToDoListUniversity.Models;
+using ToDoListUniversity.Services;
 
 namespace ToDoListUniversity.Forms
 {
@@ -16,7 +17,6 @@ namespace ToDoListUniversity.Forms
         {
             InitializeComponent();
             homeWorksInfo = new List<HomeWorkInfo>();
-
 
         }
 
@@ -58,7 +58,7 @@ namespace ToDoListUniversity.Forms
             }
             else
             {
-                MessageBox.Show("Менять задание может лишь его владелец!");
+                ViewService.GetErrorMessage("Менять задание может лишь его владелец!");
             }
 
         }
@@ -88,9 +88,14 @@ namespace ToDoListUniversity.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Нельзя удалять чужие задания!");
+                    ViewService.GetErrorMessage("Нельзя удалять чужие задания!");
                 }
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            UpdateTable(this.dataGridView1, HomeWorkInfo.GetAllHomewWork());
         }
     }
 }

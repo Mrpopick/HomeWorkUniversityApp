@@ -13,13 +13,36 @@ namespace ToDoListUniversity.Services
     public class ViewService
     {
 
-        public static void GetMessage(string message) 
+        public static void GetErrorMessage(string message)
         {
+            const string title = "ERROR MESSAGE";
+            const MessageBoxButtons buttons = MessageBoxButtons.OK;
+            const MessageBoxIcon icon = MessageBoxIcon.Error;
+            const MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1;
+            const MessageBoxOptions options = MessageBoxOptions.ServiceNotification;
+
+            MessageBox.Show(message, title, buttons, icon, defaultButton, options);
         }
 
-        //public static Image GetImage(string filePath, int width, int height) 
-        //{
-            
-        //}
+
+        public static void GetSuccessMessage(string message) 
+        {
+            const string title = "SUCCESS";
+            const MessageBoxButtons buttons = MessageBoxButtons.OK;
+            const MessageBoxIcon icon = MessageBoxIcon.Information;
+            const MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1;
+            const MessageBoxOptions options = MessageBoxOptions.ServiceNotification;
+
+            MessageBox.Show(message, title, buttons, icon, defaultButton, options);
+        }
+
+        public static string CreateNewGuid() 
+        {
+            return Guid.NewGuid().ToString("N");
+        }
+
+
+
+
     }
 }

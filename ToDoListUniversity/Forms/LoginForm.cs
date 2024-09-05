@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using ToDoListUniversity.Forms;
 using ToDoListUniversity.Models;
+using ToDoListUniversity.Services;
 
 namespace ToDoListUniversity
 {
@@ -46,12 +47,12 @@ namespace ToDoListUniversity
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message);
+                        ViewService.GetErrorMessage(ex.Message);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Неверный логин или пароль!");
+                    ViewService.GetErrorMessage("Неверный логин или пароль!");
                 }
             }
         }
@@ -66,13 +67,13 @@ namespace ToDoListUniversity
                 }
                 else
                 {
-                    MessageBox.Show("Пароль не может быть пустым!");
+                    ViewService.GetErrorMessage("Пароль не может быть пустым!");
                     return false;
                 }
             }
             else
             {
-                MessageBox.Show("Логин не может быть пустым!");
+                ViewService.GetErrorMessage("Логин не может быть пустым!");
                 return false;
             }
         }
@@ -84,5 +85,7 @@ namespace ToDoListUniversity
             else
                 tbPassword.PasswordChar = '*';
         }
+
+
     }
 }

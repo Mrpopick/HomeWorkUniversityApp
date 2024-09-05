@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using ToDoListUniversity.Models;
+using ToDoListUniversity.Services;
 
 namespace ToDoListUniversity.Forms
 {
@@ -18,13 +19,12 @@ namespace ToDoListUniversity.Forms
                 if (ValidateData())
                 {
                     User.AddNewUser(tbFullName.Text, tbLogin.Text, tbPassword.Text, tbEmail.Text);
-                    MessageBox.Show($"Пользователь успешно добавлен {tbLogin.Text} - {tbPassword.Text}");
                     this.Close();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                ViewService.GetErrorMessage(ex.Message);
             }
         }
 
@@ -45,31 +45,31 @@ namespace ToDoListUniversity.Forms
                             }
                             else
                             {
-                                MessageBox.Show("Фио не может быть пустым!");
+                                ViewService.GetErrorMessage("Фио не может быть пустым!");
                                 return false;
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Пароль не может быть пустым!");
+                            ViewService.GetErrorMessage("Пароль не может быть пустым!");
                             return false;
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Логин не может быть пустым!");
+                        ViewService.GetErrorMessage("Логин не может быть пустым!");
                         return false;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Неверный email");
+                    ViewService.GetErrorMessage("Неверный email");
                     return false;
                 }
             }
             else
             {
-                MessageBox.Show("Емаил не может быть пустым!");
+                ViewService.GetErrorMessage("Емаил не может быть пустым!");
                 return false;
             }
         }

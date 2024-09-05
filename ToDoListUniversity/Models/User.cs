@@ -1,13 +1,11 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace ToDoListUniversity.Models
 {
     public class User
     {
-        public int Id { get; set; }
         public string fullname { get; set; }
         public string email { get; set; }
         private string login { get; set; }

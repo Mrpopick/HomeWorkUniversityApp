@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using ToDoListUniversity.Services;
 
 namespace ToDoListUniversity.Models
 {
@@ -10,7 +11,7 @@ namespace ToDoListUniversity.Models
     {
         public HomeWorkInfo()
         {
-            this.guid = Guid.NewGuid().ToString("N");
+            this.guid = ViewService.CreateNewGuid();
         }
         private string guid { get; set; }
         public string subject { get; set; }
@@ -30,7 +31,6 @@ namespace ToDoListUniversity.Models
                 using (MySqlConnection connection = new MySqlConnection(Server.Server.ConnectionString))
                 {
                     connection.Open();
-
                     MySqlCommand sqlCommand = new MySqlCommand(query, connection);
 
                     sqlCommand.Parameters.AddWithValue("@subject", hmInfo.subject);
