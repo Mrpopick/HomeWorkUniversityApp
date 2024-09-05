@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ToDoListUniversity.Forms;
 using ToDoListUniversity.Models;
@@ -28,15 +21,15 @@ namespace ToDoListUniversity
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (ValidateData()) 
+            if (ValidateData())
             {
-                if (tbLogin.Text == "admin" && tbPassword.Text == "admin") 
+                if (tbLogin.Text == "admin" && tbPassword.Text == "admin")
                 {
                     User user = new User();
                     user.fullname = "Pidor";
 
                     var newForm = new MainForm();
-                    newForm.SetUser(user);
+                    newForm.SetMainForm(user, HomeWorkInfo.GetAllHomewWork());
                     newForm.Show();
                     this.Hide();
                     return;
@@ -47,7 +40,7 @@ namespace ToDoListUniversity
                     {
                         User user = new User().GetUser(tbLogin.Text);
                         var newForm = new MainForm();
-                        newForm.SetUser(user);
+                        newForm.SetMainForm(user, HomeWorkInfo.GetAllHomewWork());
                         newForm.Show();
                         this.Hide();
                     }
@@ -56,14 +49,14 @@ namespace ToDoListUniversity
                         MessageBox.Show(ex.Message);
                     }
                 }
-                else 
+                else
                 {
                     MessageBox.Show("Неверный логин или пароль!");
                 }
             }
         }
 
-        bool ValidateData() 
+        bool ValidateData()
         {
             if (!string.IsNullOrEmpty(tbLogin.Text))
             {
@@ -71,13 +64,13 @@ namespace ToDoListUniversity
                 {
                     return true;
                 }
-                else 
+                else
                 {
                     MessageBox.Show("Пароль не может быть пустым!");
                     return false;
                 }
             }
-            else 
+            else
             {
                 MessageBox.Show("Логин не может быть пустым!");
                 return false;

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ToDoListUniversity.Models
@@ -17,17 +14,17 @@ namespace ToDoListUniversity.Models
         private string password { get; set; }
 
 
-        public static void AddNewUser(string fullname, string login, string password, string email) 
+        public static void AddNewUser(string fullname, string login, string password, string email)
         {
             string query = "INSERT INTO Users (fullname, login, password, email) VALUES (@fullname, @login, @password, @email)";
             try
             {
-                using (SqlConnection conn = new SqlConnection(Server.Server.ConnectionString))
+                using (MySqlConnection conn = new MySqlConnection(Server.Server.ConnectionString))
                 {
                     try
                     {
                         conn.Open();
-                        SqlCommand sqlCommand = new SqlCommand(query, conn);
+                        MySqlCommand sqlCommand = new MySqlCommand(query, conn);
 
                         sqlCommand.Parameters.AddWithValue("@fullname", fullname);
                         sqlCommand.Parameters.AddWithValue("@login", login);
@@ -43,22 +40,22 @@ namespace ToDoListUniversity.Models
                     }
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
 
-        public static bool CheckUsers(string login, string password) 
+        public static bool CheckUsers(string login, string password)
         {
             string query = "SELECT 1 FROM Users WHERE login = @login AND password = @password";
 
             try
             {
-                using (SqlConnection conn = new SqlConnection(Server.Server.ConnectionString))
+                using (MySqlConnection conn = new MySqlConnection(Server.Server.ConnectionString))
                 {
                     conn.Open();
-                    SqlCommand sqlCommand = new SqlCommand(query, conn);
+                    MySqlCommand sqlCommand = new MySqlCommand(query, conn);
 
                     sqlCommand.Parameters.AddWithValue("@login", login);
                     sqlCommand.Parameters.AddWithValue("@password", password);
@@ -75,20 +72,20 @@ namespace ToDoListUniversity.Models
             }
         }
 
-        public User GetUser(string login) 
+        public User GetUser(string login)
         {
             string query = "SELECT fullname, login, password, email FROM Users WHERE login = @login";
 
             try
             {
-                using (SqlConnection conn = new SqlConnection(Server.Server.ConnectionString))
+                using (MySqlConnection conn = new MySqlConnection(Server.Server.ConnectionString))
                 {
                     conn.Open();
-                    SqlCommand sqlCommand = new SqlCommand(query, conn);
+                    MySqlCommand sqlCommand = new MySqlCommand(query, conn);
 
                     sqlCommand.Parameters.AddWithValue("@login", login);
 
-                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    MySqlDataReader reader = sqlCommand.ExecuteReader();
 
                     if (reader.Read())
                     {
