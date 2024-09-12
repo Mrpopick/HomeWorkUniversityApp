@@ -106,7 +106,9 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::ToDoListUniversity.Properties.Resources.loadingcircles_102612;
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.Image = global::ToDoListUniversity.Properties.Resources.loading_image;
             this.pictureBox1.Location = new System.Drawing.Point(290, 57);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(32, 32);

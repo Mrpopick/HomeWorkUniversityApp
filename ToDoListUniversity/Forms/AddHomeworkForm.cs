@@ -99,9 +99,9 @@ namespace ToDoListUniversity.Forms
             }
         }
 
-        private void AddHomeworkForm_FormClosing(object sender, FormClosingEventArgs e)
+        private async void AddHomeworkForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            MainForm.UpdateTable(dt, _presenter.GetAllHomeWork(homeWorkInfo));
+            MainForm.UpdateTable(dt, await _presenter.GetAllHomeWork(new HomeWorkInfo()));
         }
 
         private void button3_Click(object sender, EventArgs e)

@@ -46,9 +46,9 @@ namespace ToDoListUniversity.Forms
             dt.DataSource = homeWorkInfos;
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        private async void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            List<HomeWorkInfo> hmL = _homeWorkPresenter.GetAllHomeWork(new HomeWorkInfo());
+            List<HomeWorkInfo> hmL = await _homeWorkPresenter.GetAllHomeWork(new HomeWorkInfo());
             var a = hmL.Where(x => x.start.Day == dateTimePicker1.Value.Day && x.start.Month == dateTimePicker1.Value.Month && x.start.Year == dateTimePicker1.Value.Year).ToList();
             UpdateTable(dataGridView1, a);
         }
@@ -81,7 +81,7 @@ namespace ToDoListUniversity.Forms
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private async void button3_Click(object sender, EventArgs e)
         {
             if (curentHomework != null)
             {
@@ -89,7 +89,7 @@ namespace ToDoListUniversity.Forms
                 {
                     _homeWorkPresenter.DeletehomeWork(curentHomework);
                     ViewService.GetSuccessMessage("Задание удалено!");
-                    UpdateTable(this.dataGridView1, _homeWorkPresenter.GetAllHomeWork(curentHomework));
+                    UpdateTable(this.dataGridView1, await _homeWorkPresenter.GetAllHomeWork(curentHomework));
                 }
                 else
                 {
@@ -99,9 +99,9 @@ namespace ToDoListUniversity.Forms
         }
 
 
-        private void button4_Click(object sender, EventArgs e)
+        private async void button4_Click(object sender, EventArgs e)
         {
-            UpdateTable(this.dataGridView1, _homeWorkPresenter.GetAllHomeWork(curentHomework));
+            UpdateTable(this.dataGridView1, await _homeWorkPresenter.GetAllHomeWork(curentHomework));
         }
 
         private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

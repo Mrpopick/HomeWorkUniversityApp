@@ -83,6 +83,16 @@ namespace ToDoListUniversity.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap loading_image {
+            get {
+                object obj = ResourceManager.GetObject("loading_image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap loadingcircles_102612 {
             get {
                 object obj = ResourceManager.GetObject("loadingcircles_102612", resourceCulture);

@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ToDoListUniversity.Services;
 
@@ -52,7 +53,7 @@ namespace ToDoListUniversity.Models
         }
 
 
-        public  List<HomeWorkInfo> GetAllHomewWork()
+        public  async Task<List<HomeWorkInfo>> GetAllHomewWork()
         {
             List<HomeWorkInfo> homeworkList = new List<HomeWorkInfo>();
 
@@ -65,7 +66,7 @@ namespace ToDoListUniversity.Models
                 MySqlCommand command = new MySqlCommand(query, connection);
                 MySqlDataReader reader = command.ExecuteReader();
 
-                while (reader.Read())
+                while (await reader.ReadAsync())
                 {
                     HomeWorkInfo homeWorkInfo = new HomeWorkInfo();
                     homeWorkInfo.subject = reader.GetString(0);

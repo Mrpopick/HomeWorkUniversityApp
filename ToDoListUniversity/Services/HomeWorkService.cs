@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using ToDoListUniversity.Models;
 
 namespace ToDoListUniversity.Services
@@ -20,9 +21,9 @@ namespace ToDoListUniversity.Services
             homeWork.DeleteHomeWork(homeWork);
         }
 
-        public List<HomeWorkInfo> GetAllHomeWork(HomeWorkInfo homeWork) 
+        public async Task<List<HomeWorkInfo>> GetAllHomeWork(HomeWorkInfo homeWork) 
         {
-            return homeWork.GetAllHomewWork();
+            return await homeWork.GetAllHomewWork();
         }
     }
 }

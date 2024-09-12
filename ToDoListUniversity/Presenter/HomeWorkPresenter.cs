@@ -44,9 +44,9 @@ namespace ToDoListUniversity.Presenter
             _homeWorkService.DelteHomeWork(homeWork);
         }
 
-        public List<HomeWorkInfo> GetAllHomeWork(HomeWorkInfo homeWork) 
+        public async Task<List<HomeWorkInfo>> GetAllHomeWork(HomeWorkInfo homeWork) 
         {
-            return _homeWorkService.GetAllHomeWork(homeWork);
+            return await _homeWorkService.GetAllHomeWork(homeWork);
         }
     }
 }

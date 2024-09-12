@@ -26,14 +26,16 @@ namespace ToDoListUniversity
             pictureBox1.Visible = false;
         }
 
-        private void _loginWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private async void _loginWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+
             pictureBox1.Visible = false;
             if (e.Result != null)
             {
+                var listHome = await _homeWorkPresenter.GetAllHomeWork(new HomeWorkInfo());
                 User user = (User)e.Result;
                 var newForm = new MainForm();
-                newForm.SetMainForm(user, _homeWorkPresenter.GetAllHomeWork(new HomeWorkInfo()));
+                newForm.SetMainForm(user, listHome);
                 newForm.Show();
                 this.Hide();
             }
@@ -58,6 +60,8 @@ namespace ToDoListUniversity
             {
                 user = new User();
                 user.fullname = "Pidor";
+                e.Result = user;
+                return;
             }
             user = new User(tbLogin.Text, tbPassword.Text);
             if (_userPresenter.CheckUser(user))
