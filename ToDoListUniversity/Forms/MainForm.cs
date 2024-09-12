@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using ToDoListUniversity.Models;
+using ToDoListUniversity.Presenter;
 using ToDoListUniversity.Services;
 
 namespace ToDoListUniversity.Forms
@@ -13,10 +14,13 @@ namespace ToDoListUniversity.Forms
         User mainUser;
         List<HomeWorkInfo> homeWorksInfo;
         HomeWorkInfo curentHomework;
+
+        private readonly HomeWorkPresenter _homeWorkPresenter;
         public MainForm()
         {
             InitializeComponent();
             homeWorksInfo = new List<HomeWorkInfo>();
+            _homeWorkPresenter = new HomeWorkPresenter(new HomeWorkService());
 
 
         }
@@ -44,7 +48,7 @@ namespace ToDoListUniversity.Forms
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            List<HomeWorkInfo> hmL = HomeWorkInfo.GetAllHomewWork();
+            List<HomeWorkInfo> hmL = _homeWorkPresenter.GetAllHomeWork(new HomeWorkInfo());
             var a = hmL.Where(x => x.start.Day == dateTimePicker1.Value.Day && x.start.Month == dateTimePicker1.Value.Month && x.start.Year == dateTimePicker1.Value.Year).ToList();
             UpdateTable(dataGridView1, a);
         }
@@ -83,9 +87,9 @@ namespace ToDoListUniversity.Forms
             {
                 if (curentHomework.fullname == mainUser.fullname)
                 {
-                    HomeWorkInfo.DeleteHomeWork(curentHomework);
+                    _homeWorkPresenter.DeletehomeWork(curentHomework);
                     ViewService.GetSuccessMessage("Задание удалено!");
-                    UpdateTable(this.dataGridView1, HomeWorkInfo.GetAllHomewWork());
+                    UpdateTable(this.dataGridView1, _homeWorkPresenter.GetAllHomeWork(curentHomework));
                 }
                 else
                 {
@@ -97,7 +101,7 @@ namespace ToDoListUniversity.Forms
 
         private void button4_Click(object sender, EventArgs e)
         {
-            UpdateTable(this.dataGridView1, HomeWorkInfo.GetAllHomewWork());
+            UpdateTable(this.dataGridView1, _homeWorkPresenter.GetAllHomeWork(curentHomework));
         }
 
         private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

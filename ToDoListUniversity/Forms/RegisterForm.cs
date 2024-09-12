@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Windows.Forms;
 using ToDoListUniversity.Models;
+using ToDoListUniversity.Presenter;
 using ToDoListUniversity.Services;
 
 namespace ToDoListUniversity.Forms
 {
     public partial class RegisterForm : Form
     {
+        private readonly UserPresenter _userPresenter;
         public RegisterForm()
         {
             InitializeComponent();
+            _userPresenter = new UserPresenter(new UserService());
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -18,7 +21,8 @@ namespace ToDoListUniversity.Forms
             {
                 if (ValidateData())
                 {
-                    User.AddNewUser(tbFullName.Text, tbLogin.Text, tbPassword.Text, tbEmail.Text);
+                    User user = new User(tbFullName.Text, tbEmail.Text, tbLogin.Text, tbPassword.Text);
+                    _userPresenter.AddUser(user);
                     this.Close();
                 }
             }

@@ -35,6 +35,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.cbPassword = new System.Windows.Forms.CheckBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // tbLogin
@@ -102,11 +104,21 @@
             this.cbPassword.UseVisualStyleBackColor = true;
             this.cbPassword.CheckedChanged += new System.EventHandler(this.cbPassword_CheckedChanged);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ToDoListUniversity.Properties.Resources.loadingcircles_102612;
+            this.pictureBox1.Location = new System.Drawing.Point(290, 57);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(597, 167);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cbPassword);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -116,6 +128,7 @@
             this.Controls.Add(this.tbLogin);
             this.Name = "LoginForm";
             this.Text = "LoginForm";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,5 +143,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.CheckBox cbPassword;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

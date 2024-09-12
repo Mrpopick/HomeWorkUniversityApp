@@ -11,8 +11,23 @@ namespace ToDoListUniversity.Models
         private string login { get; set; }
         private string password { get; set; }
 
+        public User(string login, string password) 
+        {
+            this.login = login;
+            this.password = password;
+        }
 
-        public static void AddNewUser(string fullname, string login, string password, string email)
+        public User() {  }
+
+        public User(string fullname, string email, string login, string password) : this(fullname, email)
+        {
+            this.login = login;
+            this.password = password;
+            this.email = email;
+            this.login = login;
+        }
+
+        public  void AddNewUser(User user)
         {
             string query = "INSERT INTO Users (fullname, login, password, email) VALUES (@fullname, @login, @password, @email)";
             try
@@ -24,10 +39,10 @@ namespace ToDoListUniversity.Models
                         conn.Open();
                         MySqlCommand sqlCommand = new MySqlCommand(query, conn);
 
-                        sqlCommand.Parameters.AddWithValue("@fullname", fullname);
-                        sqlCommand.Parameters.AddWithValue("@login", login);
-                        sqlCommand.Parameters.AddWithValue("@password", password);
-                        sqlCommand.Parameters.AddWithValue("@email", email);
+                        sqlCommand.Parameters.AddWithValue("@fullname", user.fullname);
+                        sqlCommand.Parameters.AddWithValue("@login", user.login);
+                        sqlCommand.Parameters.AddWithValue("@password", user.password);
+                        sqlCommand.Parameters.AddWithValue("@email", user.email);
 
                         sqlCommand.ExecuteNonQuery();
                         conn.Close();
@@ -44,7 +59,7 @@ namespace ToDoListUniversity.Models
             }
         }
 
-        public static bool CheckUsers(string login, string password)
+        public  bool CheckUsers(User user)
         {
             string query = "SELECT 1 FROM Users WHERE login = @login AND password = @password";
 
@@ -55,8 +70,8 @@ namespace ToDoListUniversity.Models
                     conn.Open();
                     MySqlCommand sqlCommand = new MySqlCommand(query, conn);
 
-                    sqlCommand.Parameters.AddWithValue("@login", login);
-                    sqlCommand.Parameters.AddWithValue("@password", password);
+                    sqlCommand.Parameters.AddWithValue("@login", user.login);
+                    sqlCommand.Parameters.AddWithValue("@password", user.password);
 
                     object result = sqlCommand.ExecuteScalar();
                     return result != null;
@@ -70,7 +85,7 @@ namespace ToDoListUniversity.Models
             }
         }
 
-        public User GetUser(string login)
+        public User GetUser(User us)
         {
             string query = "SELECT fullname, login, password, email FROM Users WHERE login = @login";
 
@@ -81,7 +96,7 @@ namespace ToDoListUniversity.Models
                     conn.Open();
                     MySqlCommand sqlCommand = new MySqlCommand(query, conn);
 
-                    sqlCommand.Parameters.AddWithValue("@login", login);
+                    sqlCommand.Parameters.AddWithValue("@login", us.login);
 
                     MySqlDataReader reader = sqlCommand.ExecuteReader();
 

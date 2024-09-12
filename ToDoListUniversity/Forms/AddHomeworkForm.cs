@@ -5,6 +5,7 @@ using System.Drawing.Drawing2D;
 using System.IO;
 using System.Windows.Forms;
 using ToDoListUniversity.Models;
+using ToDoListUniversity.Presenter;
 using ToDoListUniversity.Services;
 
 namespace ToDoListUniversity.Forms
@@ -18,6 +19,7 @@ namespace ToDoListUniversity.Forms
         public User user;
         private HomeWorkInfo homeWorkInfo;
         DataGridView dt;
+        private readonly HomeWorkPresenter _presenter;
         public AddHomeworkForm(User mainUser, HomeWorkInfo hm = null)
         {
             InitializeComponent();
@@ -33,7 +35,7 @@ namespace ToDoListUniversity.Forms
                 this.textBox2.Text = hm.end.ToString();
                 this.richTextBox2.Text = hm.description;
             }
-
+            _presenter = new HomeWorkPresenter(new HomeWorkService(), user, this);
 
         }
 
@@ -67,7 +69,7 @@ namespace ToDoListUniversity.Forms
                     }
 
                 }
-                HomeWorkInfo.UpdateHomeWork(homeWorkInfo);
+                _presenter.UpdateHomeWork(homeWorkInfo);
                 ViewService.GetSuccessMessage("Дз обновлено");
                 this.Close();
             }
@@ -91,7 +93,7 @@ namespace ToDoListUniversity.Forms
 
                 }
 
-                HomeWorkInfo.AddNewHomeWork(hwinfo);
+                _presenter.AddHomeWork(hwinfo);
                 ViewService.GetSuccessMessage("Дз добавленно!");
                 this.Close();
             }
@@ -99,7 +101,7 @@ namespace ToDoListUniversity.Forms
 
         private void AddHomeworkForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            MainForm.UpdateTable(dt, HomeWorkInfo.GetAllHomewWork());
+            MainForm.UpdateTable(dt, _presenter.GetAllHomeWork(homeWorkInfo));
         }
 
         private void button3_Click(object sender, EventArgs e)

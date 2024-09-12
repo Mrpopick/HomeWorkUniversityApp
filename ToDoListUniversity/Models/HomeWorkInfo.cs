@@ -22,7 +22,7 @@ namespace ToDoListUniversity.Models
 
 
 
-        public static void AddNewHomeWork(HomeWorkInfo hmInfo)
+        public  void AddNewHomeWork(HomeWorkInfo hmInfo)
         {
             string query = "INSERT INTO HomeworkTask (subject, difficulty, description, start, last, fullname, guid) VALUES (@subject, @difficulty, @description, @start, @last, @fullname, @guid)";
             try
@@ -52,7 +52,7 @@ namespace ToDoListUniversity.Models
         }
 
 
-        public static List<HomeWorkInfo> GetAllHomewWork()
+        public  List<HomeWorkInfo> GetAllHomewWork()
         {
             List<HomeWorkInfo> homeworkList = new List<HomeWorkInfo>();
 
@@ -86,7 +86,7 @@ namespace ToDoListUniversity.Models
             return homeworkList;
         }
 
-        public static void UpdateHomeWork(HomeWorkInfo hm)
+        public  void UpdateHomeWork(HomeWorkInfo hm)
         {
 
             string query = $"UPDATE HomeworkTask SET subject = @subject, difficulty = @difficulty, description = @description, start = @start, last = @last, fullname = @fullname WHERE guid = @guid";
@@ -108,7 +108,7 @@ namespace ToDoListUniversity.Models
             }
         }
 
-        public static void DeleteHomeWork(HomeWorkInfo hm)
+        public  void DeleteHomeWork(HomeWorkInfo hm)
         {
             string query = "DELETE FROM HomeworkTask WHERE guid = @guid";
 
